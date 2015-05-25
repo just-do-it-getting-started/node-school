@@ -1,0 +1,27 @@
+{
+  "name": "understand-nodejs",
+  "version": "1.0.0",
+  "description": "study project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimshinelove/understand-nodejs.git"
+  },
+  "keywords": [
+    "node",
+    "study"
+  ],
+  "author": "KimJiTae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimshinelove/understand-nodejs/issues"
+  },
+  "homepage": "https://github.com/kimshinelove/understand-nodejs",
+  "dependencies": {
+    "formidable": "^1.0.17"
+  }
+}
