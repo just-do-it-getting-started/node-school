@@ -1,18 +1,15 @@
 var http = require('http');
-var BufferList = require('bl');
+var bl = require('bl');
 
 var url = process.argv[2];
 
 http.get(url, function(res) {
-	var bl = new BufferList();
+	res.pipe(bl(function(err, data) {
+		if(err) return console.error(err);
 
-	res.on('data', function(data) {
-		bl.append(new Buffer(data));
-	});
+		data = data.toString();
 
-	res.on('end', function() {
-		console.log(bl.length);
-		console.log(bl.toString());
-	});
-	res.on('error', console.error);
+		console.log(data.length);
+		console.log(data);
+	}));
 });
