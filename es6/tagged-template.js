@@ -1,16 +1,18 @@
 console.log(html`<b>${process.argv[2]} says</b>: "${process.argv[3]}"`);
 
-function html(...strs) {
-	var staticString = strs[0];
-	var name = strs[1];
-	var comment = strs[2];
+function html(aStatic, ...strs) {
+	var name = strs[0];
+	var comment = strs[1];
 
-	comment = comment.replace(/&/g, '&amp;')
-					.replace(/</g, '&lt;')
-					.replace(/>/g, '&gt;')
-					.replace(/"/g, '&quot;')
-					.replace(/'/g, '&apos;');
+	comment = escape(comment);
 
+	return `${aStatic[0]}${name}${aStatic[1]}${comment}${aStatic[2]}`;
+}
 
-	return `${staticString[0]}${name}${staticString[1]}${comment}${staticString[2]}`;
+function escape(comment) {
+	return comment.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&apos;');
 }
